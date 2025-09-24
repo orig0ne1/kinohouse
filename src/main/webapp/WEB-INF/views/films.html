@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Кинопремьеры</title>
+
+    <!-- Bootstrap + Mobirise -->
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/theme/css/style.css">
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/css/mbr-additional.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .premieres-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+        }
+
+        .premier-item {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s;
+        }
+
+        .premier-item:hover {
+            transform: scale(1.03);
+        }
+
+        .premier-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .premier-info {
+            padding: 15px;
+        }
+
+        .premier-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .premier-rating {
+            font-size: 16px;
+            color: #e5e500;
+            margin-bottom: 10px;
+        }
+
+        .premier-description {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .premier-date {
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<section data-bs-version="5.1" class="menu menu2 cid-uWw5nqLeQi" once="menu" id="menu-5-uWw5nqLeQi">
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="/">
+                        <img src="https://i.ibb.co/GfrWySd2/logo.jpg" alt="KinoHouse Logo" style="height: 4.3rem;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="/">KinoHouse</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <div class="hamburger"><span></span><span></span><span></span><span></span></div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown">
+                    <li class="nav-item"><a class="nav-link link display-4" th:href="@{/films(promo=${promo})}">Фильмы</a></li>
+                    <li class="nav-item"><a class="nav-link link display-4" th:href="@{/about(promo=${promo})}">О нас</a></li>
+
+                </ul>
+                <div class="navbar-buttons mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="https://t.me/kinohouse_support_bot">Служба поддержки</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<!-- КОНТЕНТ -->
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 content-head text-center mt-5">
+                <h2 class="mbr-section-title mbr-fonts-style mb-4 display-2">
+                    <strong>Кинопремьеры</strong>
+                </h2>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    Последние 30 премьер с рейтингами и кратким описанием
+                </p>
+            </div>
+        </div>
+
+        <div class="premieres-container" id="premieres">
+            <!-- JS вставит данные -->
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<section data-bs-version="5.1" class="footer3 cid-uWw5nqPliR" once="footers" id="footer-3-uWw5nqPliR">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <p class="mbr-fonts-style copyright display-7">© 2025 KinoHouse Антикинотеатр. Все права защищены.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://r.mobirisesite.com/1820601/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const premieres = [ { title: "Горец", imageUrl: "https://avatars.mds.yandex.net/get-kinopoisk-image/10835644/68379ddd-7961-45e4-9253-a0e1011983fe/600x900", rating: "7.38", description: "В 1536 году шотландец Коннор Маклауд был сражен в битве, но мистическим образом воскрес, и родной клан изгнал его. Учителем Маклауда стал испанский дворянин, объяснивший, что они принадлежат к бессмертной расе воинов, которых можно лишить жизни, лишь обезглавив мечом.\n" + "\n" + "Сражение между Маклаудом и его вечным врагом Курганом, начавшееся в Шотландии XVI века, продолжается на современном Манхеттене. От исхода этой битвы зависит судьба всех смертных. Это часть дуэли, продолжающейся веками.", releaseDate: "Сентябрь" }, { title: "Мир в огне (2025)", imageUrl: "https://avatars.mds.yandex.net/get-kinopoisk-image/10671298/dac3ae7d-cd6f-43e0-83d4-4eb9c515b2ec/600x900", rating: "8.2", description: "После того как мощная солнечная вспышка уничтожила восточное полушарие Земли, охотник за сокровищами отправляется в Европу, чтобы найти «Мону Лизу». Вскоре он осознаёт, что его ждёт более важная миссия, чем поиск картины.", releaseDate: "Октябрь" }, { title: "(Не)искусственный интеллект", imageUrl: "https://avatars.mds.yandex.net/get-kinopoisk-image/10703959/2e041a71-b260-4a7b-aac4-9c761f8110dc/600x900", rating: "8.11", description: "Во время экскурсии в научно-исследовательском центре 17-летний студент- первокурсник Женя случайно попадает в испытательный образец новой модели робота «Апостол» (A.P.O100L), обладающего собственной волей и разумом. Получив случайного пилота, машина берет управление на себя и принимает решение сбежать из лаборатории. Теперь, чтобы вернуться домой, Жене придется найти с искусственным интеллектом общий язык.", releaseDate: "Октябрь" }, { title: "7 километров от Иерусалима", imageUrl: "https://avatars.mds.yandex.net/get-kinopoisk-image/10592371/68b28979-f707-41fe-b9b8-1e00df6c4f5c/600x900", rating: "8.2", description: "В поисках себя менеджер по рекламе Алессандро Форте, уставший от современного общества и собственного брака, приезжает в Иерусалим, где решает пройти 7 километров до моря пешком. В пути Алессандро встречает странного мужчину, который знает о нём всё, называет себя Иисусом и отвечает на вопросы, которые никто не решается задать вслух.", releaseDate: "Ноябрь" }, { title: "Мир в огне (2025)", imageUrl: "https://avatars.mds.yandex.net/get-kinopoisk-image/10703859/2919a915-5c7d-4832-8bb3-ad15036dd216/600x900", rating: "7.23", description: "Ванесса начинает видеть странные кошмары, в которых призраки ведут ее в «Отель Абаддон» — проклятое место, известное как «Дом Ада». К девушке обращается журналистка, которая находит связь между этим отелем, поместьем Кармайклов и цепочкой загадочных смертей, происходящих десятилетиями. Ванесса выясняет, что трагедия, случившаяся в прошлом, пробудила древнее зло и теперь «Дом Ада» требует новых жертв. Ей предстоит понять, как остановить демона, пока все ее кошмары не стали реальностью.", releaseDate: "Ноябрь" }, { title: "Звонок (2024)", imageUrl: "https://avatars.mds.yandex.net/get-kinopoisk-image/10953618/1c126ec4-b14c-4510-ad20-f3993ce3e982/600x900", rating: "9.7", description: "-", releaseDate: "Октябрь" }, { title: "Ловушка для кролика", imageUrl: "https://avatars.mds.yandex.net/get-kinopoisk-image/4486454/301f80ba-a0f7-4bae-8d0b-8b78033924fb/600x900", rating: "6.2", description: "Супруги переезжают из шумного Лондона в уединённую хижину в лесу, чтобы завершить работу над новой пластинкой. Случайно они записывают загадочный пугающий звук, и реальность вокруг них начинает меняться.", releaseDate: "Октябрь" }, { title: "Пропала собака", imageUrl: "https://avatars.mds.yandex.net/get-kinopoisk-image/4486454/43c104ec-8ae7-4149-8f8e-e5e7855480e4/600x900", rating: "6.9", description: "Фило и Рулло — неразлучные друзья, которые решаются на опасное приключение. Они отправляются на поиски Бирилло — потерявшейся собаки отца Фило. На своём пути ребята сталкиваются с различными препятствиями: им приходится преодолевать страх темноты и иметь дело с суровым горцем Гуэльфо Табаччи, который, возможно, причастен к исчезновению пса.", releaseDate: "Октябрь" } ];
+
+    const premieresContainer = document.getElementById("premieres");
+
+    premieres.forEach(premiere => {
+        const premiereElement = document.createElement("div");
+        premiereElement.classList.add("premier-item");
+
+        premiereElement.innerHTML = `
+        <div class="premier-image">
+          <img src="${premiere.imageUrl}" alt="${premiere.title}" />
+        </div>
+        <div class="premier-info">
+          <div class="premier-title">${premiere.title}</div>
+          <div class="premier-rating">Рейтинг: ${premiere.rating}</div>
+          <div class="premier-description">${premiere.description}</div>
+          <div class="premier-date">Дата премьеры: ${premiere.releaseDate}</div>
+        </div>
+      `;
+
+        premieresContainer.appendChild(premiereElement);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="https://i.ibb.co/GfrWySd2/logo.jpg" type="image/x-icon">
+    <meta name="description" content="KinoHouse Антикинотеатр — страница бронирования.">
+    <title>KinoHouse — Бронирование</title>
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/theme/css/style.css">
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/css/mbr-additional.css">
+    <style>
+        .tariff-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+        .tariff-card:hover {
+            transform: translateY(-5px);
+        }
+        .tariff-left {
+            flex: 0 0 40%;
+            text-align: center;
+        }
+        .tariff-left h4 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .tariff-left p {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        .tariff-right {
+            flex: 0 0 55%;
+            font-size: 1.1rem;
+            line-height: 1.5rem;
+            color: #555;
+        }
+        .addon-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+            text-align: center;
+            height: 100%;
+        }
+        .addon-card:hover {
+            transform: translateY(-4px);
+        }
+        .addon-card input {
+            margin-bottom: 0.5rem;
+        }
+        .addon-card h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .addon-card p {
+            margin: 0;
+            font-size: 1rem;
+            color: #666;
+        }
+        .carousel-control-prev, .carousel-control-next {
+            width: 8%;
+        }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-size: 2rem 2rem;
+            filter: invert(1) drop-shadow(0 0 3px rgba(0,0,0,0.4));
+        }
+        h4.section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 3rem 0 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h4.section-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 3px;
+            background: #007bff;
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+        .price-box {
+            position: sticky;
+            top: 100px;
+            background: #f8f9fa;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .price-box h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .price-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .price-box small {
+            display: block;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<section data-bs-version="5.1" class="menu menu2 cid-uWw5nqLeQi" once="menu" id="menu-5-uWw5nqLeQi">
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="#">
+                        <img src="https://i.ibb.co/GfrWySd2/logo.jpg" alt="KinoHouse Logo" style="height: 4.3rem;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="">KinoHouse</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <div class="hamburger"><span></span><span></span><span></span><span></span></div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown">
+                    <li class="nav-item"><a class="nav-link link display-4" th:href="@{/films(promo=${promo})}">Фильмы</a></li>
+                    <li class="nav-item"><a class="nav-link link display-4" th:href="@{/about(promo=${promo})}">О нас</a></li>
+                </ul>
+                <div class="navbar-buttons mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="/book">Билеты</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="form5 cid-uWw5nqOKH3" id="contact-form-3-uWw5nqOKH3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 content-head">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-5 display-2">
+                    <strong>Выберите тариф</strong>
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Форма -->
+            <div class="col-lg-8 mx-auto mbr-form">
+                <form th:action="@{/book}" method="get" id="bookingForm">
+                    <div id="tariffCarousel" class="carousel slide mb-5" data-bs-ride="carousel" data-bs-interval="false">
+                        <div class="carousel-inner">
+                            <div th:each="tarifEntry, iterStat : ${tariffList}"
+                                 th:classappend="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'"
+                                 th:with="price=${tarif[tarifEntry]}">
+                                <div class="tariff-card">
+                                    <div class="tariff-left">
+                                        <h4 th:text="${tarifEntry.substring(0,1).toUpperCase() + tarifEntry.substring(1)}">Standart</h4>
+                                        <p th:text="${price} + ' ₽/час'">500 ₽/час</p>
+                                        <input type="radio" name="tariff" th:value="${tarifEntry}"
+                                               th:data-price="${price}" required>
+                                    </div>
+                                    <div class="tariff-right">
+                                        <p th:switch="${tarifEntry}">
+                                            <span th:case="'standart'">Уютный вариант для небольшой компании. Отлично подходит для просмотра фильмов и сериалов с друзьями.</span>
+                                            <span th:case="'plus'">Расширенный пакет: больше пространства, улучшенный звук и удобные кресла.</span>
+                                            <span th:case="'vip'">Максимальный комфорт: отдельный зал, премиум-звук и интерьер.</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#tariffCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#tariffCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+
+                    <div class="text-center">
+                        <h4 class="section-title">Дополнительные услуги</h4>
+                    </div>
+                    <div class="row g-3">
+                        <div th:each="addon, iterStat : ${addons}" th:class="${iterStat.index % 2 == 0} ? 'col-md-6' : 'col-md-6'">
+                            <div class="addon-card">
+                                <input type="checkbox" name="addons" th:value="${addon.addonId}"
+                                       th:data-price="${addon.price}">
+                                <h5 th:text="${addon.addonName}">Свечи</h5>
+                                <p th:text="${addon.price} + ' ₽'">200 ₽</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="totalPrice" id="totalPriceInput">
+                    <input type="hidden" name="promo" th:value="${promo}">
+
+                    <div class="col-12 align-center mbr-section-btn mt-5">
+                        <button type="submit" class="btn btn-primary display-7">Забронировать</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Плашка с итоговой ценой -->
+            <div class="col-lg-4 d-none d-lg-block">
+                <div class="price-box">
+                    <h4>Итого</h4>
+                    <div class="price-value" id="totalPrice">0 ₽</div>
+                    <small>Цена обновляется при выборе тарифа и услуг</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="footer3 cid-uWw5nqPliR" once="footers" id="footer-3-uWw5nqPliR">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <p class="mbr-fonts-style copyright display-7">© 2025 KinoHouse Антикинотеатр. Все права защищены.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://r.mobirisesite.com/1820601/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tariffRadios = document.querySelectorAll("input[name='tariff']");
+        const addonCheckboxes = document.querySelectorAll("input[name='addons']");
+        const totalPriceEl = document.getElementById("totalPrice");
+        const totalPriceInput = document.getElementById("totalPriceInput");
+
+        function updatePrice() {
+            let total = 0;
+
+            // тариф
+            const selectedTariff = document.querySelector("input[name='tariff']:checked");
+            if (selectedTariff) {
+                total += parseInt(selectedTariff.dataset.price);
+            }
+
+            // допы
+            addonCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    total += parseInt(cb.dataset.price);
+                }
+            });
+
+            totalPriceEl.textContent = total + " ₽";
+            totalPriceInput.value = total;
+        }
+
+        tariffRadios.forEach(r => r.addEventListener("change", updatePrice));
+        addonCheckboxes.forEach(cb => cb.addEventListener("change", updatePrice));
+    });
+</script>
+</body>
+</html>

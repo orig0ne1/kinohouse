@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="https://i.ibb.co/GfrWySd2/logo.jpg" type="image/x-icon">
+    <meta name="description" content="KinoHouse Антикинотеатр — страница оплаты бронирования.">
+    <title>KinoHouse — Оплата бронирования</title>
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/bootstrap/css/bootstrap.min.css?rnd=1757616945654">
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/theme/css/style.css?rnd=1757616945654">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&display=swap"></noscript>
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/css/mbr-additional.css?rnd=1757616945654" type="text/css">
+
+    <style>
+        :root{
+            --header-h: 88px;
+            --footer-h: 220px;
+            --page-bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --accent: #0b4fd8; /* официальный синий акцент */
+            --muted: #6b7280;
+            --border: #e6e9ef;
+            --success: #0f5132;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Source Serif 4', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--page-bg);
+            color: #1f2937;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+
+        .page-wrapper { display:flex; flex-direction:column; min-height:100vh; }
+        .page-content { display:flex; justify-content:center; align-items:center; padding:48px 20px; min-height:calc(100vh - var(--header-h) - var(--footer-h)); box-sizing:border-box; }
+
+        /* Официальный вид окна оплаты: строгие линии, чёткая типографика */
+        .transfer-window {
+            background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,251,252,0.95));
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 30px rgba(15,23,42,0.06);
+            padding: 28px 28px 24px 28px;
+            max-width: 560px;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        .transfer-window .header {
+            display:flex;
+            align-items:center;
+            gap:14px;
+            margin-bottom:18px;
+        }
+
+        .transfer-window .header h2 {
+            margin:0;
+            font-size:1.25rem;
+            font-weight:700;
+            color:var(--accent);
+            letter-spacing:0.2px;
+        }
+
+        .transfer-window .header p {
+            margin:0;
+            color:var(--muted);
+            font-size:0.95rem;
+        }
+
+        /* Детали платежа: табличный, читабельный вид */
+        .detail-row {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:12px 0;
+            border-bottom:1px dashed var(--border);
+        }
+        .detail-row:last-child { border-bottom:none; }
+
+        .label {
+            font-weight:600;
+            color:#374151;
+            font-size:0.92rem;
+        }
+        .value {
+            font-weight:700;
+            color:#0f1724;
+            font-size:1.02rem;
+        }
+
+        /* Раздел прикрепления — выглядеть официально, как у банков */
+        .upload-section {
+            margin:22px 0;
+            text-align:left;
+        }
+        .upload-section label {
+            display:flex;
+            align-items:center;
+            gap:12px;
+            padding:12px 14px;
+            background: linear-gradient(180deg,#fbfcfe,#ffffff);
+            border:1px solid var(--border);
+            border-radius:8px;
+            cursor:pointer;
+            transition:box-shadow .12s, border-color .12s;
+            font-weight:600;
+            color:#111827;
+            width:100%;
+            box-sizing:border-box;
+        }
+        .upload-section label:before{
+            content: "\1F4CE"; /* paperclip emoji */
+            font-size:1.05rem;
+            opacity:0.9;
+        }
+        .upload-section label:hover { box-shadow:0 6px 18px rgba(11,79,216,0.06); border-color: rgba(11,79,216,0.18); }
+        .upload-section input[type="file"] { display:none; }
+        .upload-section p {
+            margin:10px 0 0 0;
+            color:var(--muted);
+            font-size:0.85rem;
+        }
+
+        /* Кнопка — строгая и заметная, без кричащих цветов */
+        .btn-transfer {
+            width:100%;
+            padding:12px 16px;
+            background:var(--accent);
+            color:#fff;
+            border:none;
+            border-radius:8px;
+            font-size:1rem;
+            font-weight:700;
+            cursor:pointer;
+            box-shadow:0 6px 18px rgba(11,79,216,0.12);
+            transition:transform .08s ease, box-shadow .12s ease, background .12s;
+        }
+        .btn-transfer:hover { transform:translateY(-1px); box-shadow:0 10px 26px rgba(11,79,216,0.14); }
+        .btn-transfer-yookassa {
+            background-color: #7B00FF;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-transfer-yookassa:hover {
+            background-color: #5A00BF; /* Немного темнее для эффекта наведения */
+        }
+        /* Сообщения успеха/ошибки - аккуратно */
+        .message.success { margin-top:12px; padding:10px 12px; border-radius:6px; background: rgba(15,81,50,0.06); color:var(--success); font-weight:600; border:1px solid rgba(15,81,50,0.08); }
+
+        /* Footer — оставляем тёмным, как было */
+        section.footer3 { background:#0b1220; color:#fff; padding:36px 20px; }
+        section.footer3 .header-menu a { color:#fff; text-decoration:none; }
+
+        /* Адаптив */
+        @media (max-width:576px){
+            :root{ --footer-h:360px; }
+            .transfer-window{ padding:18px; }
+            .header h2{ font-size:1.05rem; }
+            .detail-row{ padding:10px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <!-- === Шапка (header) - Убрал фиксирование -->
+    <section data-bs-version="5.1" class="menu menu2 cid-uWw5nqLeQi" once="menu" id="menu-5-uWw5nqLeQi">
+        <!-- Удалил класс navbar-fixed-top чтобы шапка не была fixed -->
+        <nav class="navbar navbar-dropdown navbar-expand-lg">
+            <div class="container">
+                <div class="navbar-brand">
+                    <span class="navbar-logo">
+                        <a href="#">
+                            <img src="https://i.ibb.co/GfrWySd2/logo.jpg" alt="KinoHouse Logo" style="height: 4.3rem;">
+                        </a>
+                    </span>
+                    <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="">KinoHouse</a></span>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="hamburger">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                        <li class="nav-item"><a class="nav-link link display-4" th:href="@{/films(promo=${promo})}">Фильмы</a></li>
+                        <li class="nav-item"><a class="nav-link link display-4" th:href="@{/about(promo=${promo})}">О нас</a></li>
+
+                    </ul>
+                    <div class="navbar-buttons mbr-section-btn">
+                        <a class="btn btn-primary display-4" href="https://t.me/kinohouse_support_bot">Служба поддержки</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <main class="page-content">
+        <section data-bs-version="5.1" class="form5 cid-uWw5nqOKH3" id="contact-form-3-uWw5nqOKH3">
+            <div class="transfer-window">
+                <div class="header">
+                    <h2>Перевод на карту</h2>
+                    <p>Для подтверждения бронирования</p>
+                </div>
+
+                <div class="detail-row">
+                    <span class="label">Банк:</span>
+                    <span class="value" th:text="${card}"/>
+                </div>
+
+                <div class="detail-row">
+                    <span class="label">Сумма:</span>
+                    <span class="value" th:text="${totalPrice} + ' ₽'"/>
+                </div>
+
+                <form action="/uploadReceipt" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="promo" th:value="${promo}">
+                    <div class="upload-section">
+                        <label for="fileInput">
+                            📎 Прикрепить чек
+                        </label>
+                        <input type="file" id="fileInput" name="file" accept="image/jpeg,image/png,application/pdf" required>
+                        <p>Поддерживаются JPEG, PNG, PDF. Макс. 5 МБ.</p>
+                    </div>
+                    <button type="submit" class="btn-transfer">Подтвердить перевод</button>
+                </form>
+
+                <div th:if="${message}" class="message success" th:text="${message}"/>
+
+                <a th:href="@{/yookassa?promo=${promo}&totalPrice=${totalPrice}}" class="btn-transfer-yookassa" style="margin-top: 16px; display: block; text-align: center;">
+                    <img src="https://static.rustore.ru/imgproxy/L9iFxww-hNzIp_YQNe0kxomeUZDxgZkSsD5SERMICZw/preset:web_app_icon_62/aHR0cHM6Ly9zdGF0aWMucnVzdG9yZS5ydS83ODhkMzY5Yy05MjRiLTQ0M2YtODQ4My0xN2JiODk2YTg4MjM=.webp" alt="ЮKassa" style="width:20px; height:20px;">
+                    ЮКасса
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- === Футер: естественный поток (не fixed) -->
+    <section data-bs-version="5.1" class="footer3 cid-uWw5nqPliR" once="footers" id="footer-3-uWw5nqPliR">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <p class="mbr-fonts-style copyright display-7">© 2025 KinoHouse Антикинотеатр. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://r.mobirisesite.com/1820601/assets/web/assets/jquery/jquery.min.js?rnd=1757616945654"></script>
+<script src="https://r.mobirisesite.com/1820601/assets/bootstrap/js/bootstrap.bundle.min.js?rnd=1757616945654"></script>
+<script src="https://r.mobirisesite.com/1820601/assets/dropdown/js/navbar-dropdown.js?rnd=1757616945654"></script>
+<script src="https://r.mobirisesite.com/1820601/assets/theme/js/script.js?rnd=1757616945655"></script>
+<script src="https://r.mobirisesite.com/1820601/assets/formoid.min.js?rnd=1757616945655"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98332785bb1a77fa',t:'MTc1ODU1ODI4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

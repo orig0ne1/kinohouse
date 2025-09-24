@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="https://i.ibb.co/GfrWySd2/logo.jpg" type="image/x-icon">
+    <meta name="description" content="KinoHouse Антикинотеатр — информация о кинотеатре, правила и услуги.">
+    <title>KinoHouse — О нас</title>
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/bootstrap/css/bootstrap.min.css?rnd=1757616945654">
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/theme/css/style.css?rnd=1757616945654">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&display=swap&display=swap"></noscript>
+    <link rel="stylesheet" href="https://r.mobirisesite.com/1820601/assets/css/mbr-additional.css?rnd=1757616945654" type="text/css">
+    <style>
+        body { color: #fff; background-color: #000; }
+        .bg-blur {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+        .bg-blur::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.5);
+            z-index: -1;
+        }
+        .navbar-black {
+            background: #000 !important;
+        }
+        .navbar .nav-link, .navbar .navbar-caption, .navbar .btn {
+            color: #000 !important;
+        }
+        footer {
+            background: #000 !important;
+            color: #fff;
+        }
+        .fade-up { animation: fadeUp 1.2s ease-in-out; }
+        .fade-in { animation: fadeIn 1.2s ease-in-out; }
+        .zoom-in { animation: zoomIn 1.2s ease-in-out; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<section data-bs-version="5.1" class="menu menu2 cid-uWw5nqLeQi" once="menu" id="menu-5-uWw5nqLeQi" style="background-color: #000;">
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg navbar-black">
+        <div class="container">
+            <div class="navbar-brand">
+                    <span class="navbar-logo">
+                        <a href="">
+                            <img src="https://i.ibb.co/GfrWySd2/logo.jpg" alt="KinoHouse Logo" style="height: 4.3rem;">
+                        </a>
+                    </span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption display-4" href="">KinoHouse</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                    <li class="nav-item"><a class="nav-link link display-4" th:href="@{/films(promo=${promo})}">Фильмы</a></li>
+                    <li class="nav-item"><a class="nav-link link display-4" th:href="@{/about(promo=${promo})}">О нас</a></li>
+                </ul>
+                <div class="navbar-buttons mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="https://t.me/kinohouse_suppot_bot">Служба поддержки</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="content5 cid-about-intro py-5 bg-blur fade-up" id="about-intro" style="background-image: url('https://modo.kg/wp-content/uploads/2023/04/4-1024x599.jpg');">
+    <div class="container">
+        <h2 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>О кинотеатре KinoHouse</strong></h2>
+        <p class="mbr-text mbr-fonts-style align-center display-7">KinoHouse — это антикинотеатр с уютной атмосферой, отборным репертуаром и внимательным персоналом. Мы показываем авторское и коммерческое кино, проводим тематические показы, ретроспективы и кинопоказы с обсуждением.</p>
+    </div>
+</section>
+
+<section class="content5 cid-about-services py-5 bg-blur fade-in" id="about-services" style="background-image: url('https://modo.kg/wp-content/uploads/2023/04/2-1024x599.jpg');">
+    <div class="container">
+        <h3 class="mbr-section-subtitle mbr-fonts-style align-center display-5"><strong>Наши услуги</strong></h3>
+        <ul class="mbr-fonts-style display-7 mt-3">
+            <li>Киносеансы по расписанию — новые релизы и ретроспективы.</li>
+            <li>Показы с обсуждением и тематические вечера.</li>
+            <li>Аренда кинозала для частных мероприятий.</li>
+            <li>Бар с напитками и легкими закусками.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="content5 cid-about-rules py-5 bg-blur zoom-in" id="about-rules" style="background-image: url('https://sxodim.com/uploads/posts/2022/05/10/optimized/5ed31179be9c728d6349060a21b67e41_545x305-q-85.jpg');">
+    <div class="container">
+        <h3 class="mbr-section-subtitle mbr-fonts-style align-center display-5"><strong>Правила посещения</strong></h3>
+        <ol class="mbr-fonts-style display-7 mt-3">
+            <li>Приходите за 10–15 минут до начала сеанса — это помогает не беспокоить других зрителей.</li>
+            <li>Билеты нужно сохранять до конца сеанса (бумажные или электронные).</li>
+            <li>Запрещено приносить с собой алкогольные напитки и промышленные закуски без согласования с администрацией.</li>
+            <li>Просьба отключить звук на мобильных устройствах и воздержаться от разговоров во время сеанса.</li>
+            <li>Детям до 12 лет допускаются только в сопровождении взрослых.</li>
+            <li>Администрация оставляет за собой право отказать во входе или выселить посетителя при нарушении правил.</li>
+        </ol>
+    </div>
+</section>
+
+<section class="content5 cid-about-contacts py-5 bg-blur fade-up" id="about-contacts" style="background-image: url('https://sxodim.com/uploads/images/2022/10/04/optimized/51511792bcdd6a971df19ef97bdd052e_800xauto-q-85.jpg');">
+    <div class="container">
+        <h3 class="mbr-section-subtitle mbr-fonts-style align-center display-5"><strong>Контакты и бронирование</strong></h3>
+        <p class="mbr-fonts-style display-7 mt-3">Бронирование билетов доступно на странице "Билеты". Для групповых заявок и аренды зала свяжитесь с нами:</p>
+        <p class="mbr-fonts-style display-7"><strong>Email:</strong> kinohouse-info@gmail.com</p>
+        <div class="align-center mt-4">
+            <a class="btn btn-primary display-7" th:href="@{/tarifs(promo=${promo})}">Забронировать билет</a>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-about-hours py-5 bg-blur fade-in" id="about-hours" style="background-image: url('https://sxodim.com/uploads/posts/2022/05/10/optimized/8e6b87501c9450d42def0a1052c13ea0_1400x790-q-85.jpg');">
+    <div class="container">
+        <h3 class="mbr-section-subtitle mbr-fonts-style align-center display-5"><strong>Часы работы</strong></h3>
+        <p class="mbr-fonts-style display-7 mt-3 align-center">Пн–Вс: 12:00 — 23:00 (сеансы могут начинаться в другие часы в зависимости от расписания)</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<section data-bs-version="5.1" class="footer3 cid-uWw5nqPliR" once="footers" id="footer-3-uWw5nqPliR" style="background-color: #000;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <p class="mbr-fonts-style copyright display-7">© 2025 KinoHouse Антикинотеатр. Все права защищены.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://r.mobirisesite.com/1820601/assets/web/assets/jquery/jquery.min.js?rnd=1757616945654"></script>
+<script src="https://r.mobirisesite.com/1820601/assets/bootstrap/js/bootstrap.bundle.min.js?rnd=1757616945654"></script>
+<script src="https://r.mobirisesite.com/1820601/assets/dropdown/js/navbar-dropdown.js?rnd=1757616945654"></script>
+<script src="https://r.mobirisesite.com/1820601/assets/theme/js/script.js?rnd=1757616945655"></script>
+<script src="https://r.mobirisesite.com/1820601/assets/formoid.min.js?rnd=1757616945655"></script>
+</body>
+</html>

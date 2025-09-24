@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата через YooMoney</title>
+    <style>
+        .small-text {
+            font-size: smaller;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-color: #f5f6f5;
+            color: #333;
+        }
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        header .logo img {
+            height: 40px;
+        }
+        header .back-btn {
+            background-color: #8b3ad6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        header .back-btn:hover {
+            background-color: #7a32c1;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .content {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .content h1 {
+            font-size: 24px;
+            color: #8b3ad6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .content p {
+            font-size: 18px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .content p strong {
+            font-weight: 600;
+            color: #333;
+        }
+        .content .pay-btn {
+            background-color: #8b3ad6;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .content .pay-btn:hover {
+            background-color: #7a32c1;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 30px;
+        }
+        footer a {
+            color: #8b3ad6;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            header .back-btn {
+                margin-top: 10px;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="https://yoomoney.ru/favicon.ico" alt="YooMoney Logo">
+    </div>
+    <button class="back-btn" onclick="history.back()">Назад</button>
+</header>
+<div class="container">
+    <div class="content">
+        <h1>Оплата через YooMoney</h1>
+        <p><strong>Сумма:</strong> <strong th:text="${totalPrice}"/> RUB</p>
+        <p class="small-text"><strong>Описание:</strong>
+            Оплата заказа<br/>
+            ОГРН: 06.09.2021,<br/>
+            ИНН: 7713484300,<br/>
+            КПП: 771301001,<br/>
+            ГЕНЕРАЛЬНЫЙ ДИРЕКТОР: Искандаров Марс Рафикович<br/>
+        </p>
+        <button class="pay-btn">Оплатить</button>
+    </div>
+</div>
+<footer>
+    <p>Безопасная оплата через <a href="https://yoomoney.ru">YooMoney</a></p>
+    <p>© 2025 KinoHouse</p>
+</footer>
+</body>
+</html>
